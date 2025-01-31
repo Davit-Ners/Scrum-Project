@@ -20,6 +20,36 @@ function showCart(cartIsEmpty, cartElements) {
     }
 }
 
+function createCartProduct(elem) {
+    // Creation d'une div pour y mettre les infos du produit
+    const productBlock = document.createElement('div');
+
+    // Creation et attribution des infos sur l'element
+
+    const productTitle = document.createElement('h3');
+    productTitle.textContent = elem.title;
+
+    const productDetails = document.createElement('div');
+    
+    const productPrice = document.createElement('p');
+    productPrice.textContent = `$${elem.price}`;
+
+    const productCount = document.createElement('p');
+    productCount.textContent = `${elem.count}x`;
+
+    const productTotalPrice = document.createElement('p');
+    productTotalPrice.textContent = `$${elem.count * elem.price}`;
+
+    // Ajout des elements au block principal
+    productDetails.append(productCount, productPrice, productTotalPrice);
+    productBlock.append(productTitle, productDetails);
+
+    // Ajout de l'element au DOM
+    PanierDiv.append(productBlock);
+
+    return elem.count * elem.price;
+}
+
 
 
 // showCart(true);
