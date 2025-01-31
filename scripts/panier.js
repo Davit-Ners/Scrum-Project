@@ -50,6 +50,27 @@ function createCartProduct(elem) {
     return elem.count * elem.price;
 }
 
+function createTotalPriceDiv(totalPrice) {
+    const totalPriceBlock = document.createElement('div');
+    const totalTitle = document.createElement('p');
+    totalTitle.textContent = 'Total Price';
 
+    const showTotalPrice = document.createElement('p');
+    showTotalPrice.textContent = `$${totalPrice}`;
+
+    totalPriceBlock.append(totalTitle, showTotalPrice);
+
+    PanierDiv.append(totalPriceBlock);
+}
+
+function showCartElem(cartElements) {
+    let totalPrice = 0;
+    for (let elem of cartElements) {
+        const price = createCartProduct(elem);
+        totalPrice += price;
+    }
+    
+    createTotalPriceDiv(totalPrice);
+}
 
 // showCart(true);
